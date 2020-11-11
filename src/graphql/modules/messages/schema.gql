@@ -1,0 +1,23 @@
+type Message {
+  _id: ID!
+ content: String!
+ author: User!
+} 
+input MessageInput{
+  content: String!
+  author: ID!
+}
+type Query {
+  messages: [Message!]!
+  message(id: ID!): Message! 
+}
+type Mutation {
+  createMessage(data: MessageInput! ): Message!
+  updateMessage(id: ID, data: MessageInput!): Message!
+  deleteMessage(id: ID!): Boolean  
+
+}
+
+type Subscription{
+  messageAdded: Message!
+}
